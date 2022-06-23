@@ -10,7 +10,7 @@ else
     console.log("Employee is Absent");
 }
 
-// UC5:Checking Employee Wage with Condition
+// UC6:Calculating Employee Wage and Putting it in an Array
 const PartTime = 1;
 const FullTime = 2;
 const PartTimeHours = 4;
@@ -31,13 +31,21 @@ function CalculateDailyWage(CheckEmp)
         return 0;
 }
 }
+function DailyWages(EmpHrs)
+{
+    return EmpHrs * WageperHour;
+}
 let TotalEmpHrs = 0;
 let TotalWorkingDays = 0;
+let EmpDailyWageArr = new Array();
+
 while(TotalEmpHrs <= MaxHours_In_A_Month && TotalWorkingDays < WorkingDays)
 {
     TotalWorkingDays++;
     let CheckEmp = Math.floor(Math.random() * 10) % 3;
-    TotalEmpHrs += CalculateDailyWage(CheckEmp);
+    let EmpHrs = CalculateDailyWage(CheckEmp);
+    TotalEmpHrs += EmpHrs;
+    EmpDailyWageArr.push(DailyWages(EmpHrs));
 }
-let EmpWage = TotalEmpHrs * WageperHour;
+let EmpWage = DailyWages(TotalEmpHrs);
 console.log("Total Days: " + TotalWorkingDays + "\nTotal Hours: " + TotalEmpHrs +"\nEmployee Wage is: " + EmpWage);
