@@ -10,12 +10,13 @@ else
     console.log("Employee is Absent");
 }
 
-// UC3:Checking Employee PartTime And FullTime Using Function
+// UC4:Checking Employee Wage For a Month
 const PartTime = 1;
 const FullTime = 2;
 const PartTimeHours = 4;
 const FullTimeHours = 8;
 const WageperHour = 20;
+const WorkingDays = 20;
 
 function CalculateDailyWage(CheckEmp)
 {
@@ -29,7 +30,11 @@ function CalculateDailyWage(CheckEmp)
         return 0;
 }
 }
-let CheckEmp = Math.floor(Math.random() * 10) % 3;
-let Emphours = CalculateDailyWage(CheckEmp);
-let EmpWage = Emphours * WageperHour;
-console.log("Employee Wage is: " + EmpWage);
+let TotalEmpHrs = 0;
+for(let day = 0; day < WorkingDays; day++)
+{
+    let CheckEmp = Math.floor(Math.random() * 10) % 3;
+    TotalEmpHrs += CalculateDailyWage(CheckEmp);
+}
+let EmpWage = TotalEmpHrs * WageperHour;
+console.log("Hours: " + TotalEmpHrs + "\nEmployee Wage is: " + EmpWage);
