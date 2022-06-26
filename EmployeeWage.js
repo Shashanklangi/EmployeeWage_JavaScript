@@ -52,3 +52,12 @@ while(TotalEmpHrs <= MaxHours_In_A_Month && TotalWorkingDays < WorkingDays)
         });
 }
 console.log(" Showing daily hours worked and wage earned : " + empdailyHrsAndWageArr);
+
+// UC11A : 
+let totalWages = empdailyHrsAndWageArr
+                .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+                .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0);
+let totalHours = empdailyHrsAndWageArr
+                .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
+                .reduce((totalHours, dailyHrsAndWage) => totalHours += dailyHrsAndWage.dailyHours, 0);
+console.log(" Total Hours: " + totalHours + " Total Wages: " + totalWages);
