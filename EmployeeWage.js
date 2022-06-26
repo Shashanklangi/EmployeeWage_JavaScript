@@ -53,7 +53,7 @@ while(TotalEmpHrs <= MaxHours_In_A_Month && TotalWorkingDays < WorkingDays)
 }
 console.log(" Showing daily hours worked and wage earned : " + empdailyHrsAndWageArr);
 
-// UC11A : 
+// UC11A : Create Employee Pay Roll Data with ID Name Salary
 let totalWages = empdailyHrsAndWageArr
                 .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
                 .reduce((totalWage, dailyHrsAndWage) => totalWage += dailyHrsAndWage.dailyWage, 0);
@@ -61,3 +61,21 @@ let totalHours = empdailyHrsAndWageArr
                 .filter(dailyHrsAndWage => dailyHrsAndWage.dailyWage > 0)
                 .reduce((totalHours, dailyHrsAndWage) => totalHours += dailyHrsAndWage.dailyHours, 0);
 console.log(" Total Hours: " + totalHours + " Total Wages: " + totalWages);
+
+// UC11B : Logging Full working Days
+process.stdout.write("logging full working days")
+empdailyHrsAndWageArr.filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 8)
+                    .forEach(dailyHrsAndWage => process.stdout.write(dailyHrsAndWage.toString()));
+
+// UC11C : Part Working String
+let partWorkingDayStrArr = empdailyHrsAndWageArr
+                            .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 4)
+                            .map(dailyHrsAndWage => dailyHrsAndWage.toString());
+                            console.log("\n11C--partWorkingDayStrArr :" + partWorkingDayStrArr);
+
+// UC11D : Non Working Day Number
+let nonWorkingDayNums = empdailyHrsAndWageArr
+                        .filter(dailyHrsAndWage => dailyHrsAndWage.dailyHours == 0)
+                        .map(dailyHrsAndWage => dailyHrsAndWage.dayNum);
+                        console.log("11D--nonWorkingDayNums : " + nonWorkingDayNums);
+
